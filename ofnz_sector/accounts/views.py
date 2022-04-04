@@ -6,6 +6,9 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from ofnz_sector.accounts.models import Profile
+
+
 class UserRegisterView(views.CreateView):
     form_class = CreateProfileForm
     template_name = 'accounts/profile_create.html'
@@ -24,3 +27,19 @@ class UserLoginView(auth_views.LoginView):
 
 class EditProfileView:
     pass
+
+
+class ChangeUserPasswordView(auth_views.PasswordChangeView):
+    template_name = 'accounts/change_password.html'
+
+
+class ProfileDetailsView(views.DetailView):
+    model = Profile
+    template_name = 'accounts/profile_details.html'
+    context_object_name = 'profile'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # shoes owned by profile
+
+        return context
