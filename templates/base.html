@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <title>OfnzSector</title>
 
-    <link rel="stylesheet" href="../static/static.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 {#start of Navigation#}
-<nav>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Ofnz Sector</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Women</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Men</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kids</a>
+                </li>
+{#                add logit to check if user is authenticated#}
+                <li>
+                    <a class="nav-link" href="#">Add Product</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 {#end of Navigation#}
 <div class="container">
@@ -17,8 +47,8 @@
     {% endblock %}
 </div>
 {#start of Footer#}
-<footer>
-
+<footer class="fixed-bottom card-footer">
+    <div>@2022 Ofnz Sector Python Web Basics Workshop</div>
 </footer>
 {#end of Footer#}
 </body>

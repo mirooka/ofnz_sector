@@ -6,6 +6,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from ofnz_sector.accounts.forms import CreateProfileForm
 from ofnz_sector.accounts.models import Profile
 
 
@@ -40,6 +41,6 @@ class ProfileDetailsView(views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # shoes owned by profile
+        # clothes owned by profile
 
         return context

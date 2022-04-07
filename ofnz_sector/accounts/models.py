@@ -22,7 +22,7 @@ class OfnzUser (models.Model):
     is_staff = models.BooleanField(
         default=False,
     )
-    
+
     USERNAME_FIELD = 'username'
 
     objects = OfnzUserManager()
