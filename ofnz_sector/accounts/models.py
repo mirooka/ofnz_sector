@@ -1,13 +1,13 @@
+from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 from django.db import models
+from django.contrib.auth import models as auth_models
 
-
-# Create your models here.
 from ofnz_sector.accounts.managers import OfnzUserManager
 from ofnz_sector.common.validators import validate_only_letters
 
 
-class OfnzUser (models.Model):
+class OfnzUser (auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     USERNAME_MAX_LENGTH = 20
 
     username = models.CharField(

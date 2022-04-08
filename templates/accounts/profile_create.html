@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="container mb-5">
+        <h1 class="text-center">Create Your Profile</h1>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form method="post" action="{% url 'profile register' %}">
+                    {% csrf_token %}
+                    {{ form }}
 
-</body>
-</html>
+                    <button class="btn btn-primary mt-2" type="submit">Create</button>
+                </form>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+{% endblock %}

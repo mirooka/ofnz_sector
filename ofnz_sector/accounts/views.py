@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views
 
-from django.shortcuts import render
+# from django.shortcuts import render
 
 
 # Create your views here.

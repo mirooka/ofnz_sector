@@ -7,17 +7,17 @@ from django.contrib.auth import forms as auth_forms, get_user_model
 
 class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
     first_name = forms.CharField(
-        max_length=Profile.FIRST_NAME_MAX_LENGTH
+        max_length=Profile.FIRST_NAME_MAX_LENGTH,
     )
     last_name = forms.CharField(
-        max_length=Profile.LAST_NAME_MAX_LENGTH
+        max_length=Profile.LAST_NAME_MAX_LENGTH,
     )
     picture = forms.URLField()
     date_of_birth = forms.DateField()
     gender = forms.ChoiceField(
-        choices=Profile.GENDERS
+        choices=Profile.GENDERS,
     )
-    email = forms.EmailField
+    email = forms.EmailField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

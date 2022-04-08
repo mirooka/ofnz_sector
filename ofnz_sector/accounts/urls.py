@@ -4,7 +4,7 @@ from django.views.generic import RedirectView
 from ofnz_sector.accounts.views import UserLoginView, ChangeUserPasswordView, ProfileDetailsView, UserRegisterView
 
 urlpatterns = (
-    path('login/', UserLoginView.as_view(), name='Login user'),
+    path('login/', UserLoginView.as_view(), name='login user'),
     path('edit-pass/', ChangeUserPasswordView.as_view(), name='change password'),
     path('password-change-done/', RedirectView.as_view(), name='change password done'),
 
