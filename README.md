@@ -1,2 +1,2 @@
 # ofnz_sector
- Shoes Shop
+ Outfit Shop
