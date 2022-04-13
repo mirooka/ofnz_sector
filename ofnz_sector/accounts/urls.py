@@ -2,11 +2,11 @@ from django.urls import path
 from django.views.generic import RedirectView
 
 from ofnz_sector.accounts.views import UserLoginView, ChangeUserPasswordView, ProfileDetailsView, UserRegisterView, \
-    ProfileDeleteView, ProfileEditView, logout_view
+    ProfileDeleteView, ProfileEditView, UserLogoutView
 
 urlpatterns = (
     path('login/', UserLoginView.as_view(), name='login user'),
-    path('logout/', logout_view, name='logout user'),
+    path('logout/', UserLogoutView.as_view(), name='logout user'),
     path('edit-pass/', ChangeUserPasswordView.as_view(), name='change password'),
     path('password-change-done/', RedirectView.as_view(), name='change password done'),
 

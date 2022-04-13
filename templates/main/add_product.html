@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div>
+        <a href="{% url 'add hat' %}" class="btn btn-outline-info">Add Hat</a>
+        <a href="{% url 'add shirt' %}" class="btn btn-outline-info">Add Shirt</a>
+        <a href="{% url 'add jacket' %}" class="btn btn-outline-info">Add Jacket</a>
+        <a href="{% url 'add pants' %}" class="btn btn-outline-info">Add Pants</a>
+        <a href="{% url 'add shoes' %}" class="btn btn-outline-info">Add Shoes</a>
+    </div>
+
+{% endblock %}

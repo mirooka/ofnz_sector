@@ -4,7 +4,7 @@
     <a href="{% url 'profile register' %}" class="btn btn-outline-info">Register</a>
     <a href="{% url 'login user' %}" class="btn btn-outline-info">Login</a>
     {% else  %}
-    <a href="#" class="btn btn-outline-info">Add Product</a>
+    <a href="{% url 'add product' %}" class="btn btn-outline-info">Add Product</a>
     <a href="#" class="btn btn-outline-info">View newest arrivals</a>
     {% endif %}
 {% endblock %}

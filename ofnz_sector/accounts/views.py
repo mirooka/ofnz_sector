@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views, logout
 
 
 # Create your views here.
-from ofnz_sector.accounts.forms import CreateProfileForm
+from ofnz_sector.accounts.forms import CreateProfileForm, EditProfileForm
 from ofnz_sector.accounts.models import Profile
 
 
@@ -28,13 +28,13 @@ class UserLoginView(auth_views.LoginView):
         return super().get_success_url()
 
 
-def logout_view(request):
-    logout(request)
-    return redirect('index')
+class UserLogoutView(auth_views.LogoutView):
+    template_name = 'main/home_page.html'
 
 
 class ChangeUserPasswordView(auth_views.PasswordChangeView):
     template_name = 'accounts/change_password.html'
+    success_url = reverse_lazy('index')
 
 
 class ProfileDetailsView(views.DetailView):
@@ -55,26 +55,21 @@ class ProfileDetailsView(views.DetailView):
 
 
 class ProfileEditView(views.UpdateView):
-    form_class = CreateProfileForm
+    form_class = EditProfileForm
+    model = Profile
     template_name = 'accounts/profile_edit.html'
-    template_name_suffix = 'form'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
     success_url = reverse_lazy('main/home_page.html')
 
 
 class ProfileDeleteView(views.DeleteView):
-    template_name = 'accounts/profile_delete.html'
     model = Profile
 
-    def get_object(self, queryset=None):
-        profile_object = super(ProfileDeleteView, self).get_object()
-        if not profile_object.owner == self.request.user:
-            raise Http404
-        return profile_object
+    def get_queryset(self):
+        owner = self.request.user
+        return self.model.objects.filter(owner=owner)
 
+    template_name = 'accounts/profile_delete.html'
     template_name_suffix = 'profile'
+
     success_url = reverse_lazy('index')
