@@ -36,13 +36,13 @@
                     {% endif %}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Women</a>
+                    <a class="nav-link" href="{% url 'women products' %}">Women</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Men</a>
+                    <a class="nav-link" href="{% url 'men products' %}">Men</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kids</a>
+                    <a class="nav-link" href="{% url 'kids products' %}">Kids</a>
                 </li>
 {#                add logit to check if user is authenticated#}
                 {% if request.user.is_authenticated %}
@@ -67,8 +67,8 @@
 {% endblock %}
 
 {#start of Footer#}
-<footer class="fixed-bottom card-footer">
-    <div>@2022 Ofnz Sector Python Web Basics Workshop</div>
+<footer class="page-footer font-small-blue">
+    <div class="footer-copyright text-center py-3">@2022 Ofnz Sector Python Web Basics Workshop</div>
 </footer>
 {#end of Footer#}
 </body>

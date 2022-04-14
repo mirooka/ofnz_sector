@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="container">
+    <h1 class="text-center">Delete your product</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <form method="post" action="{% url 'delete product' product.pk %}">
+                {% csrf_token %}
+                <h3 class="text-center">Are you sure you want to delete: {{ product.title }}</h3>
+                <div class="d-inline p-2 w-50">
+            <img src="{{ product.picture }}"
+                 class="w-100 rounded mx-auto d-block" alt="{{ product.description }}"/>
+        </div>
+                <button class="btn-danger mt-2" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}

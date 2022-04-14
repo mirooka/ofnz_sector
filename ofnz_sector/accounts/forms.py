@@ -72,7 +72,7 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = {'first_name', 'last_name', 'picture', 'date_of_birth', 'gender', 'email'}
         widgets = {
             'first_name': forms.TextInput(
                 attrs={

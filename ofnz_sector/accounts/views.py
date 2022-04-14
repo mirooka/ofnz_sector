@@ -69,7 +69,7 @@ class ProfileEditView(views.UpdateView):
     model = Profile
     template_name = 'accounts/profile_edit.html'
 
-    success_url = reverse_lazy('main/home_page_no_profile.html')
+    success_url = reverse_lazy('index private')
 
 
 class ProfileDeleteView(views.DeleteView):

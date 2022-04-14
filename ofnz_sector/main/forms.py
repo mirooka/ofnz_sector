@@ -1,7 +1,7 @@
 from django import forms
 
-from ofnz_sector.common.helpers import BootstrapFormMixin
-from ofnz_sector.main.models import Shoes, Pants, Shirt, Hat, Jacket
+from ofnz_sector.common.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
+from ofnz_sector.main.models import Shoes, Pants, Shirt, Hat, Jacket, AbstractModel
 
 
 class CreateProductForm(BootstrapFormMixin, forms.ModelForm):
@@ -137,3 +137,18 @@ class CreateJacketForm(CreateProductForm):
                 }
             ),
         }
+
+
+class DeleteProductForm(forms.ModelForm, BootstrapFormMixin, DisabledFieldsFormMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+        self._init_disabled_fields()
+
+    class Meta:
+        model = AbstractModel
+        fields = {}
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
