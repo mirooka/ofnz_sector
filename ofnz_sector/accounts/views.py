@@ -10,17 +10,18 @@ from django.contrib.auth import views as auth_views, logout
 # Create your views here.
 from ofnz_sector.accounts.forms import CreateProfileForm, EditProfileForm
 from ofnz_sector.accounts.models import Profile
+from ofnz_sector.main.models import Shoes, Pants, Shirt, Hat, Jacket
 
 
 class UserRegisterView(views.CreateView):
     form_class = CreateProfileForm
     template_name = 'accounts/profile_create.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
 
 class UserLoginView(auth_views.LoginView):
     template_name = 'accounts/login_page.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index private')
 
     def get_success_url(self):
         if self.success_url:
@@ -29,12 +30,12 @@ class UserLoginView(auth_views.LoginView):
 
 
 class UserLogoutView(auth_views.LogoutView):
-    template_name = 'main/home_page.html'
+    template_name = 'main/home_page_no_profile.html'
 
 
 class ChangeUserPasswordView(auth_views.PasswordChangeView):
     template_name = 'accounts/change_password.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index private')
 
 
 class ProfileDetailsView(views.DetailView):
@@ -44,10 +45,19 @@ class ProfileDetailsView(views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # clothes owned by profile
+        products_shoes = list(Shoes.objects.filter(user_id=self.object.user_id))
+        products_pants = list(Pants.objects.filter(user_id=self.object.user_id))
+        products_shirt = list(Shirt.objects.filter(user_id=self.object.user_id))
+        products_hat = list(Hat.objects.filter(user_id=self.object.user_id))
+        products_jacket = list(Jacket.objects.filter(user_id=self.object.user_id))
         context.update(
             {
-                'is_owner': self.object.user_id == self.request.user.id
+                'products_shoes': products_shoes,
+                'products_pants': products_pants,
+                'products_shirt': products_shirt,
+                'products_hat': products_hat,
+                'products_jacket': products_jacket,
+                'is_owner': self.object.user_id == self.request.user.id,
             }
         )
 
@@ -59,7 +69,7 @@ class ProfileEditView(views.UpdateView):
     model = Profile
     template_name = 'accounts/profile_edit.html'
 
-    success_url = reverse_lazy('main/home_page.html')
+    success_url = reverse_lazy('main/home_page_no_profile.html')
 
 
 class ProfileDeleteView(views.DeleteView):
@@ -72,4 +82,4 @@ class ProfileDeleteView(views.DeleteView):
     template_name = 'accounts/profile_delete.html'
     template_name_suffix = 'profile'
 
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')

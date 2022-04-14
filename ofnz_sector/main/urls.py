@@ -1,10 +1,11 @@
 from django.urls import path
 
-from ofnz_sector.main.views.generic import HomeView, AddProductListView
+from ofnz_sector.main.views.generic import HomeViewPublic, AddProductListView, HomeViewPrivate
 from ofnz_sector.main.views.products import AddShoesView, AddPantsView, AddShirtView, AddHatView, AddJacketView
 
 urlpatterns = (
-    path('', HomeView.as_view(), name='index'),
+    path('home/', HomeViewPublic.as_view(), name='index public'),
+    path('', HomeViewPrivate.as_view(), name='index private'),
     path('add_product/', AddProductListView.as_view(), name='add product'),
     path('add_product/shoes/', AddShoesView.as_view(), name='add shoes'),
     path('add_product/pants/', AddPantsView.as_view(), name='add pants'),

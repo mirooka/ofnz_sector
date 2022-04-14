@@ -7,7 +7,7 @@ from ofnz_sector.main.forms import CreateShoesForm, CreateJacketForm, CreateHatF
 class AddShoesView(views.CreateView):
     form_class = CreateShoesForm
     template_name = 'main/add_shoes.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -18,7 +18,7 @@ class AddShoesView(views.CreateView):
 class AddPantsView(views.CreateView):
     form_class = CreatePantsForm
     template_name = 'main/add_pants.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -29,7 +29,7 @@ class AddPantsView(views.CreateView):
 class AddShirtView(views.CreateView):
     form_class = CreateShirtForm
     template_name = 'main/add_shirt.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -40,7 +40,7 @@ class AddShirtView(views.CreateView):
 class AddHatView(views.CreateView):
     form_class = CreateHatForm
     template_name = 'main/add_hat.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -51,7 +51,7 @@ class AddHatView(views.CreateView):
 class AddJacketView(views.CreateView):
     form_class = CreateJacketForm
     template_name = 'main/add_jacket.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index public')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

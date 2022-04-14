@@ -25,7 +25,18 @@ class AbstractModel(models.Model):
         null=True,
         blank=True,
     )
-    
+    description = models.TextField(
+        null=True,
+        blank=True,
+    )
+    price = models.FloatField(
+        default=0
+    )
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
+
 
 class Shoes(AbstractModel):
     # Constants

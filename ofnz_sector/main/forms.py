@@ -18,10 +18,11 @@ class CreateProductForm(BootstrapFormMixin, forms.ModelForm):
         return product
 
 
+
 class CreateShoesForm(CreateProductForm):
     class Meta:
         model = Shoes
-        fields = '__all__'
+        fields = ('title', 'gender', 'picture', 'type', 'price', 'description')
         widgets = {
             'title': forms.TextInput(
                 attrs={
@@ -32,18 +33,35 @@ class CreateShoesForm(CreateProductForm):
                 attrs={
                     'placeholder': 'Enter picture url'
                 }
-            )
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enter description',
+                    'rows': 3,
+                }
+            ),
         }
 
 
 class CreatePantsForm(CreateProductForm):
     class Meta:
         model = Pants
-        fields = '__all__'
+        fields = ('title', 'gender', 'picture', 'type', 'price', 'description')
         widgets = {
             'title': forms.TextInput(
                 attrs={
                     'placeholder': 'Enter title of product',
+                }
+            ),
+            'picture': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter picture url'
+                }
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enter description',
+                    'rows': 3,
                 }
             ),
         }
@@ -52,11 +70,22 @@ class CreatePantsForm(CreateProductForm):
 class CreateShirtForm(CreateProductForm):
     class Meta:
         model = Shirt
-        fields = '__all__'
+        fields = ('title', 'gender', 'picture', 'type', 'price', 'description')
         widgets = {
             'title': forms.TextInput(
                 attrs={
                     'placeholder': 'Enter title of product',
+                }
+            ),
+            'picture': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter picture url'
+                }
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enter description',
+                    'rows': 3,
                 }
             ),
         }
@@ -65,11 +94,22 @@ class CreateShirtForm(CreateProductForm):
 class CreateHatForm(CreateProductForm):
     class Meta:
         model = Hat
-        fields = '__all__'
+        fields = ('title', 'gender', 'picture', 'type', 'price', 'description')
         widgets = {
             'title': forms.TextInput(
                 attrs={
                     'placeholder': 'Enter title of product',
+                }
+            ),
+            'picture': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter picture url'
+                }
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enter description',
+                    'rows': 3,
                 }
             ),
         }
@@ -78,11 +118,22 @@ class CreateHatForm(CreateProductForm):
 class CreateJacketForm(CreateProductForm):
     class Meta:
         model = Jacket
-        fields = '__all__'
+        fields = ('title', 'gender', 'picture', 'type', 'price', 'description')
         widgets = {
             'title': forms.TextInput(
                 attrs={
                     'placeholder': 'Enter title of product',
+                }
+            ),
+            'picture': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter picture url'
+                }
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enter description',
+                    'rows': 3,
                 }
             ),
         }

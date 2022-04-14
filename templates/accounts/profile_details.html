@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block page_content %}
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="d-flex">
             <div class="d-inline p-2 w-50">
                 <img src="{{ profile.picture }}"
@@ -9,32 +9,114 @@
             <div class="d-inline p-2 w-50">
 
 
-
                 <div class="d-flex flex-column">
                     <h5><u>Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
-{#                    getter property 'full_name' in profile is also fine#}
+                    {#                    getter property 'full_name' in profile is also fine#}
                     <!-- If Date of Birth -->
                     {% if profile.date_of_birth %}
-                    <h5><u>Birthdate:</u>{{ profile.date_of_birth }}</h5>
+                        <h5><u>Birthdate:</u>{{ profile.date_of_birth }}</h5>
                     {% endif %}
                     <!-- If Email -->
                     {% if profile.email %}
-                    <h5><u>Email:</u> {{ profile.email }}</h5>
+                        <h5><u>Email:</u> {{ profile.email }}</h5>
                     {% endif %}
                     <!-- If Gender is Chosen -->
                     {% if profile.gender %}
-                    <h5><u>Gender:</u> {{ profile.gender }}</h5>
+                        <h5><u>Gender:</u> {{ profile.gender }}</h5>
                     {% endif %}
                 </div>
 
                 {% if is_owner %}
-{#                    FIXES TO BE DONE HERE!!!#}
-                <a href="{% url 'profile edit' %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'change password' %}" class="btn btn-primary">Change password</a>
-                <a href="{% url 'profile delete' %}" class="btn btn-danger">Delete</a>
-                <a href="{% url 'logout user' %}" class="btn btn-danger">Log out</a>
+                    {#                    FIXES TO BE DONE HERE!!!#}
+                    <a href="{% url 'profile edit' %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'change password' %}" class="btn btn-primary">Change password</a>
+                    <a href="{% url 'profile delete' %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'logout user' %}" class="btn btn-danger">Log out</a>
                 {% endif %}
             </div>
         </div>
     </div>
+{% endblock %}
+{% block bottom_page_content %}
+    {% if products_shoes %}
+    <h2 class="text-center">My products</h2>
+    <h4 class="text-left">My shoes</h4>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for shoe in products_shoes %}
+                <div style="width: 18rem">
+                    <h5>{{ shoe.title }}</h5>
+                    {% if shoe.picture %}
+                        <img src="{{ shoe.picture }}"
+                        class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if products_pants %}
+    <h4 class="text-left">My pants</h4>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for pant in products_pants %}
+                <div style="width: 18rem">
+                    <h5>{{ pant.title }}</h5>
+                    {% if pant.picture %}
+                        <img src="{{ pant.picture }}"
+                        class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if products_shirt %}
+    <h4 class="text-left">My shirts</h4>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for shirt in products_shirt %}
+                <div style="width: 18rem">
+                    <h5>{{ shirt.title }}</h5>
+                    {% if shirt.picture %}
+                        <img src="{{ shirt.picture }}"
+                        class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if products_hat %}
+    <h4 class="text-left">My hats</h4>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for hat in products_hat %}
+                <div style="width: 18rem">
+                    <h5>{{ hat.title }}</h5>
+                    {% if hat.picture %}
+                        <img src="{{ hat.picture }}"
+                        class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if products_jacket %}
+    <h4 class="text-left">My jackets</h4>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for jacket in products_jacket %}
+                <div style="width: 18rem">
+                    <h5>{{ jacket.title }}</h5>
+                    {% if jacket.picture %}
+                        <img src="{{ jacket.picture }}"
+                        class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}
