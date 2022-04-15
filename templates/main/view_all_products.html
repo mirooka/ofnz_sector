@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="container mb-5">
+        <div class="row mb-5">
+            {% for product in products %}
+                <div style="width: 18rem">
+                    <h5>Title: {{ product.title }}</h5>
+                    {% if product.picture %}
+                        <img src="{{ product.picture }}"
+                             class="w-50 rounded mx-auto d-block" alt="picture">
+                    {% endif %}
+                    <p class="card-text">Gender: {{ product.gender }}</p>
+                    {% if product.type %}
+                        <p class="card-text">Type: {{ product.type }}</p>
+                    {% endif %}
+                    <p class="card-text">Price: {{ product.price }} $</p>
+                    {% if product.description %}
+                        <p class="card-text">Description: {{ product.description|truncatechars:30 }}</p>
+                    {% endif %}
+                    <a href="{% url 'details product' product.id %}" class="btn-outline-info">Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

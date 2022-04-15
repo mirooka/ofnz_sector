@@ -79,7 +79,12 @@ class Profile(models.Model):
         OfnzUser,
         on_delete=models.CASCADE,
         primary_key=True,
+        unique=True,
+        verbose_name='Profile'
     )
+
+    def delete_user(self):
+        self.user.delete()
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

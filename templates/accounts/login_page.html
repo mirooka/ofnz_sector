@@ -9,7 +9,10 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form }}
-                <button class="btn btn-primary mt-2" type="submit">Log in</button>
+                <button class="btn btn-primary mt-2" type="submit">Sing in</button>
+                <br>
+                <p>Don't have an account ? </p>
+                <a class="btn btn-primary" href="{% url 'profile register' %}">Sing up</a>
             </form>
             <!-- End Login Form -->
 

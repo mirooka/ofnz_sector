@@ -2,7 +2,7 @@ from django.views import generic as views
 from django.urls import reverse_lazy
 
 from ofnz_sector.main.forms import CreateShoesForm, CreateJacketForm, CreateHatForm, CreateShirtForm, CreatePantsForm, \
-    DeleteProductForm
+    DeleteProductForm, EditProductForm
 from ofnz_sector.main.models import AbstractModel
 
 
@@ -72,9 +72,12 @@ class ProductDetailView(views.DetailView):
         return context
 
 
-# class ProductEditView(views.UpdateView):
-#     form_class = EditProductForm
-#     template_name = 'main/product_edit.html'
+class ProductEditView(views.UpdateView):
+    model = AbstractModel
+    form_class = EditProductForm
+    template_name = 'main/product_edit.html'
+    context_object_name = 'product'
+    success_url = reverse_lazy('index private')
 
 
 class ProductDeleteView(views.DeleteView):

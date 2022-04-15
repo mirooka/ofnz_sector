@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block page_content %}
-{#<form method="post">{% csrf_token %}#}
-{#    <p>Are you sure you want to delete "{{ profile }}"?</p>#}
-{#    {{ form }}#}
-{#    <input type="submit" value="Confirm">#}
-{#</form>#}
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete Your Profile ?</p>
+    {{ form }}
+    <input class="btn-danger" type="submit" value="Confirm">
+    <br><p>No keep my account.</p>
+    <a href="{% url 'index private'  %}" class="btn btn-primary">Return to site</a>
+
+</form>
 {% endblock %}

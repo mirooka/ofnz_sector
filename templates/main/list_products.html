@@ -2,108 +2,132 @@
 {% block page_content %}
     <h2 class="text-center">Available products</h2>
     {% if products_shoes %}
-    <h4 class="text-left">Shoes</h4>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for shoe in products_shoes %}
-                <div style="width: 18rem">
-                    <h5>{{ shoe.title }}</h5>
-                    {% if shoe.picture %}
-                        <img src="{{ shoe.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    <a href="{% url 'details product' shoe.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+        <h4 class="text-left">Shoes</h4>
+        <div class="container mb-4">
+            <div class="d-flex justify-content-start mb-5">
+                {% for shoe in products_shoes %}
+                    <div class="d-inline p-2 w-50">
+                        <h5>{{ shoe.title }}</h5>
+                        {% if shoe.picture %}
+                            <img src="{{ shoe.picture }}"
+                                 class="w-50 rounded mx-auto d-block" alt="picture">
+                        {% endif %}
+                        <p class="mt-2">Price: {{ shoe.price }} $</p>
+                        {% if shoe.type %}
+                            <p class="mt-2">Type: {{ shoe.type }}</p>
+                        {% endif %}
+                        {% if shoe.description %}
+                            <p class="mt-2">Description: {{ shoe.description }}</p>
+                        {% endif %}
+                        <p class="mt-2">Gender: {{ shoe.gender }} </p>
+                        <a href="{% url 'details product' shoe.id %}" class="btn-outline-info">Details</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
     {% if products_pants %}
-    <h4 class="text-left">Pants</h4>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for pant in products_pants %}
-                <div style="width: 18rem">
-                    <h5>{{ pant.title }}</h5>
-                    {% if pant.picture %}
-                        <img src="{{ pant.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    <a href="{% url 'details product' pant.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+        <h4 class="text-left">Pants</h4>
+        <div class="container mb-4">
+            <div class="d-flex justify-content-start mb-5">
+                {% for pant in products_pants %}
+                    <div class="d-inline p-2 w-50">
+                        <h5>{{ pant.title }}</h5>
+                        {% if pant.picture %}
+                            <img src="{{ pant.picture }}"
+                                 class="w-50 rounded mx-auto d-block" alt="picture">
+                        {% endif %}
+                        <p class="mt-2">Price: {{ pant.price }} $</p>
+                        {% if pant.type %}
+                            <p class="mt-2">Type: {{ pant.type }}</p>
+                        {% endif %}
+                        {% if pant.description %}
+                            <p class="mt-2">Description: {{ pant.description }}</p>
+                        {% endif %}
+                        <p class="mt-2">Gender: {{ pant.gender }}</p>
+
+                        <a href="{% url 'details product' pant.id %}" class="btn-outline-info">Details</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
     {% if products_shirt %}
-    <h4 class="text-left">Shirts</h4>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for shirt in products_shirt %}
-                <div style="width: 18rem">
-                    <h5>{{ shirt.title }}</h5>
-                    {% if shirt.picture %}
-                        <img src="{{ shirt.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    <a href="{% url 'details product' shirt.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+        <h4 class="text-left">Shirts</h4>
+        <div class="container mb-4">
+            <div class="d-flex justify-content-start mb-5">
+                {% for shirt in products_shirt %}
+                    <div class="d-inline p-2 w-50">
+                        <h5>{{ shirt.title }}</h5>
+                        {% if shirt.picture %}
+                            <img src="{{ shirt.picture }}"
+                                 class="w-50 rounded mx-auto d-block" alt="picture">
+                        {% endif %}
+                        <p class="mt-2">Price: {{ shirt.price }} $</p>
+                        {% if shirt.type %}
+                            <p class="mt-2">Type: {{ shirt.type }}</p>
+                        {% endif %}
+                        {% if shirt.description %}
+                            <p class="mt-2">Description: {{ shirt.description }}</p>
+                        {% endif %}
+                        <p class="mt-2">Gender: {{ shirt.gender }}</p>
+
+                        <a href="{% url 'details product' shirt.id %}" class="btn-outline-info">Details</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
     {% if products_hat %}
-    <h4 class="text-left">Hats</h4>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for hat in products_hat %}
-                <div style="width: 18rem">
-                    <h5>{{ hat.title }}</h5>
-                    {% if hat.picture %}
-                        <img src="{{ hat.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    <a href="{% url 'details product' hat.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+        <h4 class="text-left">Hats</h4>
+        <div class="container mb-4">
+            <div class="d-flex justify-content-start mb-5">
+                {% for hat in products_hat %}
+                    <div class="d-inline p-2 w-50">
+                        <h5>{{ hat.title }}</h5>
+                        {% if hat.picture %}
+                            <img src="{{ hat.picture }}"
+                                 class="w-50 rounded mx-auto d-block" alt="picture">
+                        {% endif %}
+                        <p class="mt-2">Price: {{ hat.price }} $</p>
+                        {% if hat.type %}
+                            <p class="mt-2">Type: {{ hat.type }}</p>
+                        {% endif %}
+                        {% if hat.description %}
+                            <p class="mt-2">Description: {{ hat.description }}</p>
+                        {% endif %}
+                        <p class="mt-2">Gender: {{ hat.gender }}</p>
+
+                        <a href="{% url 'details product' hat.id %}" class="btn-outline-info">Details</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
     {% if products_jacket %}
-    <h4 class="text-left">Jackets</h4>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for jacket in products_jacket %}
-                <div style="width: 18rem">
-                    <h5>{{ jacket.title }}</h5>
-                    {% if jacket.picture %}
-                        <img src="{{ jacket.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    <a href="{% url 'details product' jacket.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+        <h4 class="text-left">Jackets</h4>
+        <div class="container mb-4">
+            <div class="d-flex justify-content-start mb-5">
+                {% for jacket in products_jacket %}
+                    <div class="d-inline p-2 w-50">
+                        <h5>{{ jacket.title }}</h5>
+                        {% if jacket.picture %}
+                            <img src="{{ jacket.picture }}"
+                                 class="w-50 rounded mx-auto d-block" alt="picture">
+                        {% endif %}
+                        <p class="mt-2">Price: {{ jacket.price }} $</p>
+                        {% if jacket.type %}
+                            <p class="mt-2">Type: {{ jacket.type }}</p>
+                        {% endif %}
+                        {% if jacket.description %}
+                            <p class="mt-2">Description: {{ jacket.description }}</p>
+                        {% endif %}
+                        <p class="mt-2">Gender: {{ jacket.gender }}</p>
+
+                        <a href="{% url 'details product' jacket.id %}" class="btn-outline-info">Details</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
-    <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% else %}
-            <a disabled="disabled">&laquo; first</a>
-            <a disabled="disabled">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
 {% endblock %}

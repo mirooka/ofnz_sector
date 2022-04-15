@@ -1,5 +1,5 @@
 from django.views import generic as views
-
+from django.contrib.auth import mixins as auth_mixins
 # from ofnz_sector.accounts.models import Profile
 from ofnz_sector.common.view_mixins import RedirectToIndex
 from ofnz_sector.main.models import AbstractModel, Shoes, Pants, Shirt, Hat, Jacket
@@ -9,14 +9,19 @@ class HomeViewPublic(RedirectToIndex, views.TemplateView):
     template_name = 'main/home_page_no_profile.html'
 
 
-
-class HomeViewPrivate(views.ListView):
+class HomeViewPrivate(auth_mixins.LoginRequiredMixin, views.ListView):
     template_name = 'main/home_page_with_profile.html'
     model = AbstractModel
     context_object_name = 'products'
 
 
-class AddProductListView(views.TemplateView):
+class ViewAllProducts(auth_mixins.LoginRequiredMixin, views.ListView):
+    template_name = 'main/view_all_products.html'
+    model = AbstractModel
+    context_object_name = 'products'
+
+
+class AddProductListView(auth_mixins.LoginRequiredMixin, views.TemplateView):
     template_name = 'main/add_product.html'
 
 

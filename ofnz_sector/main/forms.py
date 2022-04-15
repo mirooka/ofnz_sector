@@ -18,7 +18,6 @@ class CreateProductForm(BootstrapFormMixin, forms.ModelForm):
         return product
 
 
-
 class CreateShoesForm(CreateProductForm):
     class Meta:
         model = Shoes
@@ -138,6 +137,15 @@ class CreateJacketForm(CreateProductForm):
             ),
         }
 
+
+class EditProductForm(forms.ModelForm, BootstrapFormMixin, DisabledFieldsFormMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    class Meta:
+        model = AbstractModel
+        fields = {'title', 'description', 'gender', 'price', 'picture'}
 
 class DeleteProductForm(forms.ModelForm, BootstrapFormMixin, DisabledFieldsFormMixin):
     def __init__(self, *args, **kwargs):

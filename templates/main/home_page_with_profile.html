@@ -1,24 +1,17 @@
 {% extends 'base.html' %}
 {% block page_content %}
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'add product' %}" class="btn btn-outline-info">Add Product</a>
-    <a href="#" class="btn btn-outline-info">View newest arrivals</a>
-    {% endif %}
-    <div class="container mb-5">
-        <div class="row mb-5">
-            {% for product in products %}
-                 <div style="width: 18rem">
-                    <h5>{{ product.title }}</h5>
-                    {% if product.picture %}
-                        <img src="{{ product.picture }}"
-                        class="w-50 rounded mx-auto d-block" alt="picture">
-                    {% endif %}
-                    {% if product.description %}
-                        <p class="card-text">{{ product.description|truncatechars:30 }}</p>
-                    {% endif %}
-                    <a href="{% url 'details product' product.id %}" class="btn-outline-info">Details</a>
-                </div>
-            {% endfor %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <img style="width: 100%" src="https://www.onemoretrend.bg/images/screen_index.webp?v=" alt="home_page_image">
+            <div class="position-sticky">
+                <h1 class="display-4">Ofnz Sector</h1>
+                <p class="lead">Show your outfit and find potential buyers.</p>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'add product' %}" class="btn btn-outline-info">Add Product</a>
+                    <a href="{% url 'show all products' %}" class="btn btn-outline-info">View all products</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

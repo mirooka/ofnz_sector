@@ -7,14 +7,13 @@
         </div>
         <div class="d-inline p-2 w-50">
             <p class="mt-2">Title: {{ product.title }}</p>
-            <p class="mt-2">Price: {{ product.price }}</p>
+            <p class="mt-2">Price: {{ product.price }} $</p>
             {% if product.description %}
             <p class="mt-2">Description: {{ product.description }}</p>
             {% endif %}
             <p class="mt-2">Gender: {{ product.gender }}</p>
             {% if is_owner %}
-                    <button>Owner</button>
-{#                <a href="{% url 'edit pet photo' pet_photo.pk %}" class="btn btn-primary">Edit</a>#}
+                <a href="{% url 'edit product' product.pk %}" class="btn btn-primary">Edit</a>
                 <a href="{% url 'delete product' product.pk %}" class="btn btn-danger">Delete</a>
             {% endif %}
         </div>

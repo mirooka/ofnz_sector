@@ -111,16 +111,6 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
 
 class DeleteProfileForm(forms.ModelForm):
 
-    def save(self, commit=True):
-        # pets = list(self.instance.pet_set.all())
-        # # should be done with  signals
-        # # because this breaks the abstraction of the auth app
-        # pet_photos = PetPhoto.objects.filter(tagged_pets__in=pets)
-        # pet_photos.delete()
-        self.instance.delete()
-
-        return self.instance
-
     class Meta:
         model = Profile
         fields = ()

@@ -3,13 +3,13 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, logout
-
+from django.contrib.auth import mixins as auth_mixins
 # from django.shortcuts import render
 
 
 # Create your views here.
-from ofnz_sector.accounts.forms import CreateProfileForm, EditProfileForm
-from ofnz_sector.accounts.models import Profile
+from ofnz_sector.accounts.forms import CreateProfileForm, EditProfileForm, DeleteProfileForm
+from ofnz_sector.accounts.models import Profile, OfnzUser
 from ofnz_sector.main.models import Shoes, Pants, Shirt, Hat, Jacket
 
 
@@ -29,16 +29,16 @@ class UserLoginView(auth_views.LoginView):
         return super().get_success_url()
 
 
-class UserLogoutView(auth_views.LogoutView):
+class UserLogoutView(auth_mixins.LoginRequiredMixin, auth_views.LogoutView):
     template_name = 'main/home_page_no_profile.html'
 
 
-class ChangeUserPasswordView(auth_views.PasswordChangeView):
+class ChangeUserPasswordView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):
     template_name = 'accounts/change_password.html'
     success_url = reverse_lazy('index private')
 
 
-class ProfileDetailsView(views.DetailView):
+class ProfileDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     model = Profile
     template_name = 'accounts/profile_details.html'
     context_object_name = 'profile'
@@ -64,7 +64,7 @@ class ProfileDetailsView(views.DetailView):
         return context
 
 
-class ProfileEditView(views.UpdateView):
+class ProfileEditView(auth_mixins.LoginRequiredMixin, views.UpdateView):
     form_class = EditProfileForm
     model = Profile
     template_name = 'accounts/profile_edit.html'
@@ -72,12 +72,12 @@ class ProfileEditView(views.UpdateView):
     success_url = reverse_lazy('index private')
 
 
-class ProfileDeleteView(views.DeleteView):
-    model = Profile
-
-    def get_queryset(self):
-        owner = self.request.user
-        return self.model.objects.filter(owner=owner)
+class ProfileDeleteView(auth_mixins.LoginRequiredMixin, views.DeleteView):
+    model = OfnzUser
+    form_class = DeleteProfileForm
+    # def get_queryset(self):
+    #     owner = self.request.user
+    #     return self.model.objects.filter(owner=owner)
 
     template_name = 'accounts/profile_delete.html'
     template_name_suffix = 'profile'
